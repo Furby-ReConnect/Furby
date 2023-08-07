@@ -2,7 +2,9 @@ import ctypes
 from ctypes.wintypes import LPCSTR, UINT
 import os
 
-a1800dll = ctypes.WinDLL('a1800.dll')
+os.mkdir("wavs")
+
+a1800dll = ctypes.WinDLL('C:\\Users\\chris\\Documents\\Projects\\Furby\\Furby\\audioutils\\A1800.DLL')
 
 # enc doesn't seem to work - need to double-check the parms
 encproto = ctypes.WINFUNCTYPE(ctypes.c_uint, LPCSTR, LPCSTR, UINT, ctypes.POINTER(UINT), UINT)
@@ -18,9 +20,9 @@ decfunc = decproto(('dec', a1800dll), decparamflags)
 #ret=decfunc(infile=LPCSTR('tu003410_4701Ah_115Eh.a18'.encode('ascii')), outfile=LPCSTR('out.wav'.encode('ascii')))
 #print(ret)
 
-files=os.listdir('3410') # directory with the a18 files extracted from the DLC
+files=os.listdir('chunks') # directory with the a18 files extracted from the DLC
 for f in files:
-    fname = '3410/' + f
+    fname = 'chunks/' + f
     outfile = 'wavs/' + f + '.wav' # directy to output to
     print(fname)
     decfunc(infile=LPCSTR(fname.encode('ascii')), outfile=LPCSTR(outfile.encode('ascii')))

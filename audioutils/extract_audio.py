@@ -1,6 +1,9 @@
 # extract a18 audio files from a DLC file
+import os
 
-dlcfile = 'tu012700.dlc'
+os.mkdir("chunks")
+
+dlcfile = 'Princess.AMF'
 with open(dlcfile, 'rb') as f:
     dlcdata = bytearray(f.read())
 

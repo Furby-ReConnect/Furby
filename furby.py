@@ -416,7 +416,7 @@ class dlc(object):
 				for i in all_frame_offsets:
 					
 					if i not in interim_frames:
-						print "dead frame at index %02d" % i
+						print("dead frame at index %02d" % i)
 						interim_frames[i] = [0,1,0,1,0,1,0,1,self.t3_terminator]
 
 				self.frames = [interim_frames[i] for i in all_frame_offsets]
@@ -479,7 +479,7 @@ class dlc(object):
 		def analyse_frames(self, anim_no, frame_no):
 			
 			thisframe = self.anim_tree[anim_no]["frames"][frame_no]
-			print [hex(i) for i in thisframe]
+			print([hex(i) for i in thisframe])
 
 		def audit_palettes(self):
 
@@ -490,7 +490,7 @@ class dlc(object):
 					for x in f[1::2]:
 						palettes.add(x)
 			
-			print [hex(i) for i in palettes]
+			print([hex(i) for i in palettes])
 
 	#Passes tests;
 	#All fields identified.
@@ -676,8 +676,8 @@ class dlc(object):
 				for x in range(self.cel_width):
 					colours.add(cel[y][x])
 
-			print colours
-			print hex(len(colours))
+			print(colours)
+			print(hex(len(colours)))
 
 	#Passes tests;
 	#several fields in the T3 and T4 entries in need of identification tho
@@ -1335,7 +1335,7 @@ class dlc(object):
 
 		if filepath_in is not None:
 
-			with open(filepath_in, "r") as f:
+			with open(filepath_in, "rb") as f:
 
 				#Parse header.
 				self.dlc_header = self.HEADER_section(f.read(0x288))
@@ -1369,7 +1369,7 @@ class dlc(object):
 					
 					if (self_test is not None):
 
-						print "testing %s at offset %d" % (sec, filemap[sec]["o"])
+						print("testing %s at offset %d" % (sec, filemap[sec]["o"]))
 						newbytes = d.write_out()
 						try:
 							print(len(rawbytes) == len(newbytes))
@@ -1381,7 +1381,7 @@ class dlc(object):
 									break
 							raise AssertionError("Test failed: error at offset 0x%x\n\texpected %02x, got %02x" % (i, ord(rawbytes[i]), ord(newbytes[i]) ))
 						else:
-							print "\tTest Successful!"
+							print("\tTest Successful!")
 
 	#Builds a new DLC.
 	def build(self, filepath_in):
