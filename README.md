@@ -1,4 +1,7 @@
 # Furby
+
+Original repo: https://github.com/ctxis/Furby
+
 ## Python tools for handing Furby Connect DLC files
 
 <p align="center">
